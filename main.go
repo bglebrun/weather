@@ -11,6 +11,10 @@ import (
 
 func main() {
 	city, state := os.Args[1], os.Args[2]
+	if city == "" || state == "" {
+		fmt.Print("USAGE: weather [city] [state]")
+		return
+	}
 	w := WeatherGo.MakeQuery(WeatherGo.BuildURL(WeatherGo.BuildLocation(city, state)))
 	if w == nil {
 		fmt.Printf("Program Error")
